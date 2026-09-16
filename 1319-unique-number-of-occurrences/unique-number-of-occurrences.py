@@ -3,10 +3,10 @@ class Solution(object):
         d = {}
         for i in arr:
             d[i] = d.get(i, 0) + 1 
-        seen_frequencies = []
+        seen = set()
         for freq in d.values():
-            if freq in seen_frequencies:
+            if freq in seen:
                 return False 
-            seen_frequencies.append(freq)
+            seen.add(freq)
         return True
        
