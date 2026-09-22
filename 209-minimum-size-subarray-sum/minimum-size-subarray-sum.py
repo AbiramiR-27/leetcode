@@ -1,19 +1,26 @@
-class Solution(object):
-    def minSubArrayLen(self, target, nums):
-        left = 0
-        window_sum = 0
-        minimum = float('inf')
+class Solution:
+    def minSubArrayLen(self, target: int, nums: list[int]) -> int:
+        l=0
+        min_len=float('inf')
+        sum=0
+        for r in range(len(nums)):
+            sum+=nums[r]
+            while sum>=target:
+                min_len=min(min_len,r-l+1)
 
-        for right in range(len(nums)):
-            window_sum += nums[right]
+                sum-=nums[l]
+                l+=1
 
-            while window_sum >= target:
-                minimum = min(minimum, right - left + 1)
-
-                window_sum -= nums[left]
-                left += 1
-
-        if minimum == float('inf'):
+        if min_len == float('inf'):
             return 0
+        
+        return min_len
 
-        return minimum
+                
+                
+
+            
+
+            
+
+
